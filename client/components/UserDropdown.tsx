@@ -56,9 +56,7 @@ export default function UserDropdown() {
             <div className="font-poppins font-semibold text-sm text-black">
               John-doe (Admin)
             </div>
-            <div className="font-poppins text-xs text-black">
-              Settings
-            </div>
+            <div className="font-poppins text-xs text-black">Settings</div>
           </div>
         </Button>
       </DropdownMenuTrigger>

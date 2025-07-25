@@ -51,15 +51,18 @@ export default function STOManage() {
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   const filteredData = mockData.filter((item) => {
-    const matchesSearch = item.id.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === "Filter by Status" || item.status === statusFilter;
+    const matchesSearch = item.id
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesStatus =
+      statusFilter === "Filter by Status" || item.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       <main className="px-8 pb-8">
         {/* Page Title */}
         <div className="mb-8">
@@ -106,7 +109,10 @@ export default function STOManage() {
 
           {/* Filter by Status */}
           <div className="relative">
-            <DropdownMenu open={isStatusDropdownOpen} onOpenChange={setIsStatusDropdownOpen}>
+            <DropdownMenu
+              open={isStatusDropdownOpen}
+              onOpenChange={setIsStatusDropdownOpen}
+            >
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
@@ -177,7 +183,10 @@ export default function STOManage() {
 
           {/* Sort by */}
           <div className="relative">
-            <DropdownMenu open={isSortDropdownOpen} onOpenChange={setIsSortDropdownOpen}>
+            <DropdownMenu
+              open={isSortDropdownOpen}
+              onOpenChange={setIsSortDropdownOpen}
+            >
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
@@ -281,9 +290,15 @@ export default function STOManage() {
           <CardContent className="p-0">
             {/* Table Header */}
             <div className="grid grid-cols-6 gap-4 p-6 border-b">
-              <div className="font-poppins text-xl font-semibold text-black">STO ID</div>
-              <div className="font-poppins text-xl font-semibold text-black">Status</div>
-              <div className="font-poppins text-xl font-semibold text-black">Predicted supply</div>
+              <div className="font-poppins text-xl font-semibold text-black">
+                STO ID
+              </div>
+              <div className="font-poppins text-xl font-semibold text-black">
+                Status
+              </div>
+              <div className="font-poppins text-xl font-semibold text-black">
+                Predicted supply
+              </div>
               <div className="col-span-3 flex justify-end">
                 <Button className="bg-green-400 hover:bg-green-500 text-black font-poppins font-bold rounded-2xl px-8 h-12">
                   <svg
@@ -323,18 +338,25 @@ export default function STOManage() {
             {/* Table Body */}
             <div className="divide-y">
               {filteredData.map((item, index) => (
-                <div key={item.id} className="grid grid-cols-6 gap-4 p-4 items-center bg-white rounded-2xl">
-                  <div className="font-poppins text-xl text-black font-medium">{item.id}</div>
+                <div
+                  key={item.id}
+                  className="grid grid-cols-6 gap-4 p-4 items-center bg-white rounded-2xl"
+                >
+                  <div className="font-poppins text-xl text-black font-medium">
+                    {item.id}
+                  </div>
                   <div>
                     <span
                       className={`px-4 py-2 rounded-2xl text-black font-poppins font-normal text-base ${getStatusColor(
-                        item.status
+                        item.status,
                       )}`}
                     >
                       {item.status}
                     </span>
                   </div>
-                  <div className="font-poppins text-xl text-black font-medium">{item.predictedSupply}</div>
+                  <div className="font-poppins text-xl text-black font-medium">
+                    {item.predictedSupply}
+                  </div>
                   <div className="flex gap-2">
                     <Button
                       variant="outline"
@@ -455,18 +477,13 @@ export default function STOManage() {
           <div className="font-poppins text-base text-black">
             Showing 1-10 out of 500 STOs
           </div>
-          
+
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               className="flex items-center gap-2 font-poppins font-semibold text-base text-black hover:bg-gray-100"
             >
-              <svg
-                width="16"
-                height="12"
-                viewBox="0 0 16 12"
-                fill="none"
-              >
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
                 <path
                   d="M11 11.25L4 6L11 0.75"
                   stroke="currentColor"
@@ -520,12 +537,7 @@ export default function STOManage() {
               className="flex items-center gap-2 font-poppins font-semibold text-base text-black hover:bg-gray-100"
             >
               Next
-              <svg
-                width="16"
-                height="12"
-                viewBox="0 0 16 12"
-                fill="none"
-              >
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
                 <path
                   d="M5 11.25L12 6L5 0.75"
                   stroke="currentColor"

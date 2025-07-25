@@ -2,7 +2,7 @@ import PlaceholderPage from "./PlaceholderPage";
 
 export default function WarehouseManage() {
   return (
-    <PlaceholderPage 
+    <PlaceholderPage
       title="Warehouse Management"
       description="Monitor warehouse operations, inventory levels, and supply chain logistics."
     />
