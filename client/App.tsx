@@ -14,6 +14,10 @@ import STODetails from "./pages/STODetails";
 import WarehouseManage from "./pages/WarehouseManage";
 import WarehouseDetails from "./pages/WarehouseDetails";
 import Input from "./pages/Input";
+import InputSales from "./pages/InputSales";
+import InputArchitecture from "./pages/InputArchitecture";
+import InputMetadata from "./pages/InputMetadata";
+import InputWarehouse from "./pages/InputWarehouse";
 import Reports from "./pages/Reports";
 import NotFound from "./pages/NotFound";
 
