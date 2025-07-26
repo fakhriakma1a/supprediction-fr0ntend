@@ -103,20 +103,20 @@ export default function Reports() {
       {/* Main Content */}
       <div className="px-8">
         {/* Page Title */}
-        <h1 className="text-[50px] font-bold text-black mb-12">
+        <h1 className="text-[50px] font-bold text-black mb-12 ml-16 font-poppins">
           Export Data Reports
         </h1>
 
         {/* Data Cards Container */}
         <div className="max-w-[1164px] mx-auto space-y-8">
           {/* Data Final_pemodelan Card */}
-          <Card className="bg-white rounded-[24px] shadow-[0_2px_4px_2px_rgba(0,0,0,0.25)] border-none p-8">
+          <Card className="bg-white rounded-[24px] chart-shadow border-none p-8">
             <div className="flex justify-between items-start mb-8">
               <div className="flex-1">
-                <h2 className="text-[28px] font-medium text-black mb-4">
+                <h2 className="text-[28px] font-medium text-black mb-4 font-poppins">
                   Data Final_pemodelan
                 </h2>
-                <p className="text-[18px] font-light text-[#5C5757] mb-8">
+                <p className="text-[18px] font-light text-[#5C5757] mb-8 font-poppins">
                   Data prediksi supply per-STO hasil dari model perhitungan.
                 </p>
               </div>
@@ -125,19 +125,19 @@ export default function Reports() {
 
             <DataTable data={finalPemodelanData} />
 
-            <p className="text-[18px] font-light text-[#5C5757] mt-8 pl-8">
+            <p className="text-[18px] font-light text-[#5C5757] mt-8 pl-8 font-poppins">
               Showing preview 5 of 2300 records.
             </p>
           </Card>
 
           {/* Data Warehouse_supply Card */}
-          <Card className="bg-white rounded-[24px] shadow-[0_2px_4px_2px_rgba(0,0,0,0.25)] border-none p-8">
+          <Card className="bg-white rounded-[24px] chart-shadow border-none p-8">
             <div className="flex justify-between items-start mb-8">
               <div className="flex-1">
-                <h2 className="text-[28px] font-medium text-black mb-4">
+                <h2 className="text-[28px] font-medium text-black mb-4 font-poppins">
                   Data Warehouse_supply
                 </h2>
-                <p className="text-[18px] font-light text-[#5C5757] mb-8">
+                <p className="text-[18px] font-light text-[#5C5757] mb-8 font-poppins">
                   Data total prediksi supply Warehouse hasil dari prediksi tiap STO.
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default function Reports() {
 
             <DataTable data={warehouseSupplyData} />
 
-            <p className="text-[18px] font-light text-[#5C5757] mt-8 pl-8">
+            <p className="text-[18px] font-light text-[#5C5757] mt-8 pl-8 font-poppins">
               Showing preview 5 of 480 records.
             </p>
           </Card>
