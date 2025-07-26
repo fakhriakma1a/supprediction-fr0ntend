@@ -373,14 +373,14 @@ export default function WarehouseManage() {
                           `/warehouse-details/${encodeURIComponent(item.id)}`,
                         )
                       }
-                      className="border-black rounded-2xl px-4 py-2 font-poppins font-bold text-xl hover:bg-gray-50"
+                      className="border-black rounded-2xl px-3 py-1 font-poppins font-bold text-base hover:bg-gray-50"
                     >
                       <svg
-                        width="24"
-                        height="20"
+                        width="16"
+                        height="16"
                         viewBox="0 0 32 28"
                         fill="none"
-                        className="mr-2"
+                        className="mr-1"
                       >
                         <path
                           d="M16 17.5C18.2091 17.5 20 15.933 20 14C20 12.067 18.2091 10.5 16 10.5C13.7909 10.5 12 12.067 12 14C12 15.933 13.7909 17.5 16 17.5Z"
