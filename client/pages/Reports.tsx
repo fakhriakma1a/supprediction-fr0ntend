@@ -30,17 +30,17 @@ function DataTable({ data }: { data: DataRecord[] }) {
       <table className="w-full">
         <thead>
           <tr className="text-left">
-            <th className="text-[20px] font-normal text-[#5C5757] pb-4 pl-8">STO_id</th>
-            <th className="text-[20px] font-normal text-[#5C5757] pb-4">Avg_sales</th>
-            <th className="text-[20px] font-normal text-[#5C5757] pb-4">Predicted_supply</th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 pl-8 font-poppins">STO_id</th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">Avg_sales</th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">Predicted_supply</th>
           </tr>
         </thead>
         <tbody>
           {data.map((record, index) => (
             <tr key={index} className="border-none">
-              <td className="text-[20px] font-normal text-black py-2 pl-8">{record.stoId}</td>
-              <td className="text-[20px] font-normal text-black py-2">{record.avgSales}</td>
-              <td className="text-[20px] font-normal text-black py-2">{record.predictedSupply}</td>
+              <td className="text-[20px] font-normal text-black py-2 pl-8 font-poppins">{record.stoId}</td>
+              <td className="text-[20px] font-normal text-black py-2 font-poppins">{record.avgSales}</td>
+              <td className="text-[20px] font-normal text-black py-2 font-poppins">{record.predictedSupply}</td>
             </tr>
           ))}
         </tbody>
