@@ -342,7 +342,7 @@ export default function WarehouseManage() {
               {filteredData.map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  className="grid grid-cols-6 gap-4 p-4 items-center bg-white rounded-2xl"
+                  className="grid grid-cols-4 gap-4 p-4 items-center bg-white rounded-2xl"
                 >
                   <div className="font-poppins text-xl text-black font-medium">
                     {item.id}
@@ -359,7 +359,7 @@ export default function WarehouseManage() {
                   <div className="font-poppins text-xl text-black font-medium">
                     {item.totalSupply}
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex gap-1 justify-center">
                     <Button
                       variant="outline"
                       onClick={() =>
@@ -394,8 +394,6 @@ export default function WarehouseManage() {
                       </svg>
                       Details
                     </Button>
-                  </div>
-                  <div className="flex gap-1 justify-center">
                     <Button
                       variant="outline"
                       className="border-black rounded-2xl px-3 py-1 font-poppins font-bold text-base hover:bg-gray-50"
