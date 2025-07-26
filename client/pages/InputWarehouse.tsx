@@ -69,15 +69,15 @@ export default function InputWarehouse() {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* WH ID Field */}
+              {/* Warehouse ID Field */}
               <div className="space-y-2">
                 <Label htmlFor="whId" className="font-poppins text-lg font-medium text-black">
-                  WH ID
+                  Warehouse ID
                 </Label>
                 <Input
                   id="whId"
                   type="text"
-                  placeholder="e.g., DEPOK WH"
+                  placeholder="CILEUNGSI_WH"
                   value={formData.whId}
                   onChange={(e) => handleInputChange("whId", e.target.value)}
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
@@ -93,7 +93,7 @@ export default function InputWarehouse() {
                 <Input
                   id="stoId"
                   type="text"
-                  placeholder="e.g., JGL001"
+                  placeholder="JGL001"
                   value={formData.stoId}
                   onChange={(e) => handleInputChange("stoId", e.target.value)}
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
@@ -101,15 +101,15 @@ export default function InputWarehouse() {
                 />
               </div>
 
-              {/* WH Location Field */}
+              {/* Warehouse Location Field */}
               <div className="space-y-2">
                 <Label htmlFor="whLoc" className="font-poppins text-lg font-medium text-black">
-                  WH Location
+                  Warehouse Location
                 </Label>
                 <Input
                   id="whLoc"
                   type="text"
-                  placeholder="e.g., Jl. Nusantara 2 No.11, Depok"
+                  placeholder="Jl. Pasar Lama, Cileungsi, Bogor, Jawa Barat"
                   value={formData.whLoc}
                   onChange={(e) => handleInputChange("whLoc", e.target.value)}
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
