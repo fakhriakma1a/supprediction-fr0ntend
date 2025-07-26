@@ -70,7 +70,7 @@ export default function STOManage() {
         {/* Page Title */}
         <div className="mb-8">
           <h1 className="font-poppins text-5xl font-bold text-black mb-2">
-            STO Management
+            STO List
           </h1>
         </div>
 
