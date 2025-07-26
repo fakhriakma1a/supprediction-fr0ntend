@@ -56,7 +56,7 @@ export default function InputWarehouse() {
             {/* Form Header */}
             <div className="flex items-center justify-between mb-8">
               <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black">
-                Input Data Warehouse
+                Update Warehouse Data
               </h2>
               <Button
                 onClick={handleBack}
