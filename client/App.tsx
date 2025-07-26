@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import STOManage from "./pages/STOManage";
 import STODetails from "./pages/STODetails";
 import WarehouseManage from "./pages/WarehouseManage";
+import WarehouseDetails from "./pages/WarehouseDetails";
 import Input from "./pages/Input";
 import Reports from "./pages/Reports";
 import NotFound from "./pages/NotFound";
