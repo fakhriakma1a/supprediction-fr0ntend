@@ -46,7 +46,7 @@ export default function InputWarehouse() {
         {/* Page Title */}
         <div className="mb-8">
           <h1 className="font-poppins text-4xl md:text-5xl font-bold text-black">
-            Input Data
+            Warehouse Update Data Form
           </h1>
         </div>
 
