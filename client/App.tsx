@@ -32,6 +32,7 @@ const App = () => (
           <Route path="/sto-manage" element={<STOManage />} />
           <Route path="/sto-details/:id" element={<STODetails />} />
           <Route path="/warehouse-manage" element={<WarehouseManage />} />
+          <Route path="/warehouse-details/:id" element={<WarehouseDetails />} />
           <Route path="/input" element={<Input />} />
           <Route path="/reports" element={<Reports />} />
           {/* Catch-all route for 404 */}
