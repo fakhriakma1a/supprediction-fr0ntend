@@ -15,9 +15,9 @@ interface WarehouseData {
 export default function InputWarehouse() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<WarehouseData>({
-    whId: "",
-    stoId: "",
-    whLoc: ""
+    whId: "CILEUNGSI_WH",
+    stoId: "JGL001",
+    whLoc: "Jl. Pasar Lama, Cileungsi, Bogor, Jawa Barat"
   });
 
   const handleInputChange = (field: keyof WarehouseData, value: string) => {
