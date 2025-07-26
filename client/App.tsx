@@ -55,15 +55,21 @@ function App() {
   );
 }
 
-// Prevent multiple mounting during HMR
-const rootElement = document.getElementById("root");
-if (rootElement && !rootElement.hasChildNodes()) {
-  createRoot(rootElement).render(<App />);
-} else if (rootElement?.hasChildNodes()) {
-  // In development mode with HMR, the root may already exist
-  const existingRoot = (rootElement as any)._reactInternalInstance;
-  if (!existingRoot) {
-    rootElement.innerHTML = "";
-    createRoot(rootElement).render(<App />);
+// Proper React 18 mounting with HMR support
+const container = document.getElementById("root");
+if (!container) {
+  throw new Error("Root element not found");
+}
+
+// Store the root instance globally to prevent multiple creation
+declare global {
+  interface Window {
+    __reactRoot?: ReturnType<typeof createRoot>;
   }
 }
+
+if (!window.__reactRoot) {
+  window.__reactRoot = createRoot(container);
+}
+
+window.__reactRoot.render(<App />);
