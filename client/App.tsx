@@ -36,6 +36,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/sto-manage" element={<STOManage />} />
           <Route path="/sto-details/:id" element={<STODetails />} />
+          <Route path="/sto-update/:id" element={<STOUpdateForm />} />
           <Route path="/warehouse-manage" element={<WarehouseManage />} />
           <Route path="/warehouse-details/:id" element={<WarehouseDetails />} />
           <Route path="/input" element={<Input />} />
