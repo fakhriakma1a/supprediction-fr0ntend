@@ -44,6 +44,7 @@ const getStatusColor = (status: string) => {
 };
 
 export default function WarehouseManage() {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("Filter by Status");
   const [sortBy, setSortBy] = useState("Sort by");
