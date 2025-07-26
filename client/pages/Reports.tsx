@@ -97,30 +97,13 @@ function ExportButton() {
 export default function Reports() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="w-full h-[120px] bg-white flex items-center justify-between px-8">
-        {/* Logo */}
-        <div className="text-[50px] font-extrabold leading-none">
-          <span className="text-[#F62121]">SUP</span>
-          <span className="text-black">Prediction</span>
-        </div>
-
-        {/* Header Controls */}
-        <div className="flex items-center gap-6">
-          <RangeDropdown />
-          <UserDropdown />
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="px-8 mb-8">
-        <Navigation currentPage="reports" />
-      </div>
+      {/* Navigation Header */}
+      <Navigation />
 
       {/* Main Content */}
       <div className="px-8">
         {/* Page Title */}
-        <h1 className="text-[50px] font-bold text-black mb-12 ml-16">
+        <h1 className="text-[50px] font-bold text-black mb-12">
           Export Data Reports
         </h1>
 
