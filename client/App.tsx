@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import STOManage from "./pages/STOManage";
 import STODetails from "./pages/STODetails";
+import STOUpdateForm from "./pages/STOUpdateForm";
 import WarehouseManage from "./pages/WarehouseManage";
 import WarehouseDetails from "./pages/WarehouseDetails";
 import Input from "./pages/Input";
