@@ -14,20 +14,21 @@ import {
 interface STORecord {
   id: string;
   status: "Normal" | "Low Demand" | "High Demand";
+  avgMovingSales: number;
   predictedSupply: number;
 }
 
 const mockData: STORecord[] = [
-  { id: "JGL", status: "Normal", predictedSupply: 12 },
-  { id: "DPK", status: "Low Demand", predictedSupply: 6 },
-  { id: "TGR", status: "High Demand", predictedSupply: 18 },
-  { id: "JKT", status: "Normal", predictedSupply: 13 },
-  { id: "BGR", status: "High Demand", predictedSupply: 17 },
-  { id: "BDG", status: "Low Demand", predictedSupply: 8 },
-  { id: "BTR", status: "Normal", predictedSupply: 10 },
-  { id: "BTN", status: "Normal", predictedSupply: 12 },
-  { id: "BKS", status: "Normal", predictedSupply: 14 },
-  { id: "JWK", status: "Low Demand", predictedSupply: 6 },
+  { id: "JGL", status: "Normal", avgMovingSales: 4, predictedSupply: 12 },
+  { id: "DPK", status: "Low Demand", avgMovingSales: 1, predictedSupply: 6 },
+  { id: "TGR", status: "High Demand", avgMovingSales: 7, predictedSupply: 18 },
+  { id: "JKT", status: "Normal", avgMovingSales: 3, predictedSupply: 13 },
+  { id: "BGR", status: "High Demand", avgMovingSales: 8, predictedSupply: 17 },
+  { id: "BDG", status: "Low Demand", avgMovingSales: 1, predictedSupply: 8 },
+  { id: "BTR", status: "Normal", avgMovingSales: 4, predictedSupply: 10 },
+  { id: "BTN", status: "Normal", avgMovingSales: 3, predictedSupply: 12 },
+  { id: "BKS", status: "Normal", avgMovingSales: 5, predictedSupply: 14 },
+  { id: "JWK", status: "Low Demand", avgMovingSales: 2, predictedSupply: 6 },
 ];
 
 const getStatusColor = (status: string) => {
