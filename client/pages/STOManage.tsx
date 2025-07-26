@@ -292,7 +292,7 @@ export default function STOManage() {
         <Card className="border-black rounded-xl">
           <CardContent className="p-0">
             {/* Table Header */}
-            <div className="grid grid-cols-5 gap-4 p-6 border-b">
+            <div className="grid grid-cols-6 gap-4 p-6 border-b">
               <div className="font-poppins text-xl font-semibold text-black">
                 STO id
               </div>
@@ -307,6 +307,9 @@ export default function STOManage() {
               </div>
               <div className="font-poppins text-xl font-semibold text-black text-center">
                 Details
+              </div>
+              <div className="font-poppins text-xl font-semibold text-black text-center">
+                Actions
               </div>
             </div>
 
