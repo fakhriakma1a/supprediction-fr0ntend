@@ -244,7 +244,9 @@ export default function Navigation() {
           <div className="flex items-center gap-8">
             {navigationItems.map((item, index) => {
               const isActive = location.pathname === item.path ||
-                (item.path === "/sto-manage" && location.pathname.startsWith("/sto-details"));
+                (item.path === "/sto-manage" && location.pathname.startsWith("/sto-details")) ||
+                (item.path === "/warehouse-manage" && location.pathname.startsWith("/warehouse-details")) ||
+                (item.path === "/input" && location.pathname.startsWith("/input/"));
               return (
                 <div key={item.id} className="flex flex-col items-center">
                   <Link
