@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import STOManage from "./pages/STOManage";
+import STODetails from "./pages/STODetails";
 import WarehouseManage from "./pages/WarehouseManage";
 import Input from "./pages/Input";
 import Reports from "./pages/Reports";
