@@ -58,7 +58,7 @@ function ExportButton() {
   return (
     <Button
       onClick={handleExport}
-      className="bg-[#F62121] hover:bg-[#d91d1d] text-black font-bold text-[22px] h-[60px] px-8 rounded-[12px] flex items-center gap-4"
+      className="bg-sup-red hover:bg-red-600 text-black font-bold text-[22px] h-[60px] px-8 rounded-[12px] flex items-center gap-4"
     >
       <svg
         width="28"
