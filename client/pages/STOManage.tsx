@@ -103,7 +103,7 @@ export default function STOManage() {
               </svg>
             </div>
             <Input
-              placeholder="Search STO ID..."
+              placeholder="Search Warehouse ID..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-12 h-12 border-black rounded-3xl font-poppins"
