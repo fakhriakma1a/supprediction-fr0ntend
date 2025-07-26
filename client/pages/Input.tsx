@@ -17,30 +17,34 @@ const inputSections: InputSection[] = [
     id: "sales",
     title: "Input data sales harian",
     description: "Update data penjualan harian STO.",
-    instruction: "*Sesuaikan format tabel jika melakukan import file data (tanggal, STO_id, total_barang_terjual).",
-    route: "/input/sales"
+    instruction:
+      "*Sesuaikan format tabel jika melakukan import file data (tanggal, STO_id, total_barang_terjual).",
+    route: "/input/sales",
   },
   {
     id: "architecture",
     title: "Input data arsitektur jaringan",
     description: "Update data arsitektur dan utilisasi port ODP di area STO.",
-    instruction: "*Sesuaikan format tabel jika melakukan import file data (STO_id, Arsitektur_id, Total_port, Used_port).",
-    route: "/input/architecture"
+    instruction:
+      "*Sesuaikan format tabel jika melakukan import file data (STO_id, Arsitektur_id, Total_port, Used_port).",
+    route: "/input/architecture",
   },
   {
     id: "metadata",
     title: "Input metadata STO",
     description: "Update metadata STO baru.",
-    instruction: "*Sesuaikan format tabel jika melakukan import file data (STO_id, jarak_km, potensi_konsumen).",
-    route: "/input/metadata"
+    instruction:
+      "*Sesuaikan format tabel jika melakukan import file data (STO_id, jarak_km, potensi_konsumen).",
+    route: "/input/metadata",
   },
   {
     id: "warehouse",
     title: "Input data Warehouse",
     description: "Update data warehouse baru.",
-    instruction: "*Sesuaikan format tabel jika melakukan import file data (WH_id, STO_id, WH_loc).",
-    route: "/input/warehouse"
-  }
+    instruction:
+      "*Sesuaikan format tabel jika melakukan import file data (WH_id, STO_id, WH_loc).",
+    route: "/input/warehouse",
+  },
 ];
 
 export default function Input() {
@@ -71,7 +75,7 @@ export default function Input() {
         {/* Input Sections Grid */}
         <div className="grid grid-cols-1 gap-8">
           {inputSections.map((section) => (
-            <Card 
+            <Card
               key={section.id}
               className="rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               onMouseEnter={() => setHoveredSection(section.id)}
@@ -101,18 +105,18 @@ export default function Input() {
                     className="flex-1 h-12 bg-sup-red hover:bg-red-600 text-black font-poppins font-semibold text-lg rounded-xl flex items-center justify-center gap-3 transition-colors duration-200"
                   >
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                      <path 
-                        d="M15.75 9H2.25" 
-                        stroke="currentColor" 
-                        strokeWidth="2" 
-                        strokeMiterlimit="10" 
+                      <path
+                        d="M15.75 9H2.25"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
                         strokeLinecap="square"
                       />
-                      <path 
-                        d="M9 2.25V15.75" 
-                        stroke="currentColor" 
-                        strokeWidth="2" 
-                        strokeMiterlimit="10" 
+                      <path
+                        d="M9 2.25V15.75"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
                         strokeLinecap="square"
                       />
                     </svg>
@@ -126,12 +130,12 @@ export default function Input() {
                     className="md:w-60 h-12 border-black hover:bg-gray-50 text-black font-poppins font-semibold text-lg rounded-xl flex items-center justify-center gap-3 bg-red-200 hover:bg-red-300 transition-colors duration-200"
                   >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path 
-                        d="M19 22H5C3.346 22 2 20.654 2 19V15H4V19C4 19.551 4.448 20 5 20H19C19.552 20 20 19.551 20 19V15H22V19C22 20.654 20.654 22 19 22Z" 
+                      <path
+                        d="M19 22H5C3.346 22 2 20.654 2 19V15H4V19C4 19.551 4.448 20 5 20H19C19.552 20 20 19.551 20 19V15H22V19C22 20.654 20.654 22 19 22Z"
                         fill="currentColor"
                       />
-                      <path 
-                        d="M18.4139 8L11.9999 1.586L5.58594 8L6.99994 9.414L10.9999 5.414V16H12.9999V5.414L16.9999 9.414L18.4139 8Z" 
+                      <path
+                        d="M18.4139 8L11.9999 1.586L5.58594 8L6.99994 9.414L10.9999 5.414V16H12.9999V5.414L16.9999 9.414L18.4139 8Z"
                         fill="currentColor"
                       />
                     </svg>

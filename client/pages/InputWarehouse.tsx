@@ -17,13 +17,13 @@ export default function InputWarehouse() {
   const [formData, setFormData] = useState<WarehouseData>({
     whId: "CILEUNGSI_WH",
     stoId: "JGL001",
-    whLoc: "Jl. Pasar Lama, Cileungsi, Bogor, Jawa Barat"
+    whLoc: "Jl. Pasar Lama, Cileungsi, Bogor, Jawa Barat",
   });
 
   const handleInputChange = (field: keyof WarehouseData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -71,7 +71,10 @@ export default function InputWarehouse() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Warehouse ID Field */}
               <div className="space-y-2">
-                <Label htmlFor="whId" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="whId"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Warehouse ID
                 </Label>
                 <Input
@@ -87,7 +90,10 @@ export default function InputWarehouse() {
 
               {/* STO ID Field */}
               <div className="space-y-2">
-                <Label htmlFor="stoId" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="stoId"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   STO ID
                 </Label>
                 <Input
@@ -103,7 +109,10 @@ export default function InputWarehouse() {
 
               {/* Warehouse Location Field */}
               <div className="space-y-2">
-                <Label htmlFor="whLoc" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="whLoc"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Warehouse Location
                 </Label>
                 <Input

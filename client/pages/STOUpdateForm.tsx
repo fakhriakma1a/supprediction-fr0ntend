@@ -11,11 +11,11 @@ interface STOUpdateData {
   stoId: string;
   potensiKonsumen: string;
   jarakKm: string;
-  
+
   // Sales Harian STO
   tanggal: string;
   totalBarangTerjual: string;
-  
+
   // ODP STO
   arsitekturId: string;
   totalPort: string;
@@ -32,13 +32,13 @@ export default function STOUpdateForm() {
     totalBarangTerjual: "5",
     arsitekturId: "ODP-JGL-FAX",
     totalPort: "100",
-    usedPort: "30"
+    usedPort: "30",
   });
 
   const handleInputChange = (field: keyof STOUpdateData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -94,7 +94,10 @@ export default function STOUpdateForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="potensiKonsumen" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="potensiKonsumen"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Potensi Konsumen (0-1)
                   </Label>
                   <Input
@@ -104,14 +107,19 @@ export default function STOUpdateForm() {
                     min="0"
                     max="1"
                     value={formData.potensiKonsumen}
-                    onChange={(e) => handleInputChange("potensiKonsumen", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("potensiKonsumen", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="jarakKm" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="jarakKm"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Jarak (Km)
                   </Label>
                   <Input
@@ -120,7 +128,9 @@ export default function STOUpdateForm() {
                     step="0.1"
                     min="0"
                     value={formData.jarakKm}
-                    onChange={(e) => handleInputChange("jarakKm", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("jarakKm", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />
@@ -134,21 +144,29 @@ export default function STOUpdateForm() {
                 </h3>
 
                 <div className="space-y-2">
-                  <Label htmlFor="tanggal" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="tanggal"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Tanggal (DD-MM-YYYY)
                   </Label>
                   <Input
                     id="tanggal"
                     type="text"
                     value={formData.tanggal}
-                    onChange={(e) => handleInputChange("tanggal", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("tanggal", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="totalBarangTerjual" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="totalBarangTerjual"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Total Barang Terjual
                   </Label>
                   <Input
@@ -156,7 +174,9 @@ export default function STOUpdateForm() {
                     type="number"
                     min="0"
                     value={formData.totalBarangTerjual}
-                    onChange={(e) => handleInputChange("totalBarangTerjual", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("totalBarangTerjual", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />
@@ -170,21 +190,29 @@ export default function STOUpdateForm() {
                 </h3>
 
                 <div className="space-y-2">
-                  <Label htmlFor="arsitekturId" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="arsitekturId"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Arsitektur ID
                   </Label>
                   <Input
                     id="arsitekturId"
                     type="text"
                     value={formData.arsitekturId}
-                    onChange={(e) => handleInputChange("arsitekturId", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("arsitekturId", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="totalPort" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="totalPort"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Total Port
                   </Label>
                   <Input
@@ -192,14 +220,19 @@ export default function STOUpdateForm() {
                     type="number"
                     min="0"
                     value={formData.totalPort}
-                    onChange={(e) => handleInputChange("totalPort", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("totalPort", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="usedPort" className="font-poppins text-lg font-medium text-black">
+                  <Label
+                    htmlFor="usedPort"
+                    className="font-poppins text-lg font-medium text-black"
+                  >
                     Used Port
                   </Label>
                   <Input
@@ -207,7 +240,9 @@ export default function STOUpdateForm() {
                     type="number"
                     min="0"
                     value={formData.usedPort}
-                    onChange={(e) => handleInputChange("usedPort", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("usedPort", e.target.value)
+                    }
                     className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                     required
                   />

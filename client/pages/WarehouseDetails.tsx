@@ -41,7 +41,7 @@ export default function WarehouseDetails() {
     distance: "20.2 Km",
     connectedSTOs: 12,
     currentTotalSupply: 23,
-    status: "Low Stock"
+    status: "Low Stock",
   };
 
   return (
@@ -59,18 +59,18 @@ export default function WarehouseDetails() {
             className="bg-sup-red hover:bg-red-600 text-black font-poppins font-medium text-lg px-6 py-3 rounded-2xl flex items-center gap-3"
           >
             <svg width="20" height="18" viewBox="0 0 20 19" fill="none">
-              <path 
-                d="M17 9.32178H3" 
-                stroke="black" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
+              <path
+                d="M17 9.32178H3"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path 
-                d="M8 4.80005L3 9.32179L8 13.8435" 
-                stroke="black" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
+              <path
+                d="M8 4.80005L3 9.32179L8 13.8435"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
@@ -84,34 +84,52 @@ export default function WarehouseDetails() {
             <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
               Warehouse's Information : {warehouseInfo.name}
             </h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xl">
               <div className="flex">
-                <span className="font-poppins text-black w-48">Alamat Warehouse</span>
+                <span className="font-poppins text-black w-48">
+                  Alamat Warehouse
+                </span>
                 <span className="font-poppins text-black mx-2">:</span>
-                <span className="font-poppins text-black">{warehouseInfo.address}</span>
+                <span className="font-poppins text-black">
+                  {warehouseInfo.address}
+                </span>
               </div>
-              
+
               <div className="flex">
-                <span className="font-poppins text-black w-48">Jarak dari WH Pusat</span>
+                <span className="font-poppins text-black w-48">
+                  Jarak dari WH Pusat
+                </span>
                 <span className="font-poppins text-black mx-2">:</span>
-                <span className="font-poppins text-black">{warehouseInfo.distance}</span>
+                <span className="font-poppins text-black">
+                  {warehouseInfo.distance}
+                </span>
               </div>
-              
+
               <div className="flex">
-                <span className="font-poppins text-black w-48">Jumlah STO terhubung</span>
+                <span className="font-poppins text-black w-48">
+                  Jumlah STO terhubung
+                </span>
                 <span className="font-poppins text-black mx-2">:</span>
-                <span className="font-poppins text-black">{warehouseInfo.connectedSTOs}</span>
+                <span className="font-poppins text-black">
+                  {warehouseInfo.connectedSTOs}
+                </span>
               </div>
-              
+
               <div className="flex">
-                <span className="font-poppins text-black w-48">Current Total supply</span>
+                <span className="font-poppins text-black w-48">
+                  Current Total supply
+                </span>
                 <span className="font-poppins text-black mx-2">:</span>
-                <span className="font-poppins text-black">{warehouseInfo.currentTotalSupply}</span>
+                <span className="font-poppins text-black">
+                  {warehouseInfo.currentTotalSupply}
+                </span>
               </div>
-              
+
               <div className="flex items-center">
-                <span className="font-poppins text-black w-48">Status Warehouse</span>
+                <span className="font-poppins text-black w-48">
+                  Status Warehouse
+                </span>
                 <span className="font-poppins text-black mx-2">:</span>
                 <span className="px-4 py-2 rounded-2xl text-black font-poppins bg-orange-500">
                   {warehouseInfo.status}
@@ -127,19 +145,34 @@ export default function WarehouseDetails() {
             <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
               Warehouse Total Supply Trend Prediction
             </h2>
-            
+
             {/* Chart Placeholder */}
             <div className="relative h-72 bg-gray-50 rounded-2xl flex items-center justify-center">
               {/* Line Chart SVG */}
-              <svg width="100%" height="100%" viewBox="0 0 800 300" className="absolute inset-0">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 800 300"
+                className="absolute inset-0"
+              >
                 {/* Grid lines */}
                 <defs>
-                  <pattern id="grid" width="80" height="50" patternUnits="userSpaceOnUse">
-                    <path d="M 80 0 L 0 0 0 50" fill="none" stroke="#e5e7eb" strokeWidth="1"/>
+                  <pattern
+                    id="grid"
+                    width="80"
+                    height="50"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 80 0 L 0 0 0 50"
+                      fill="none"
+                      stroke="#e5e7eb"
+                      strokeWidth="1"
+                    />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid)" />
-                
+
                 {/* Chart line */}
                 <path
                   d="M 100 150 L 200 120 L 300 140 L 400 100 L 500 110 L 600 130 L 700 125"
@@ -148,7 +181,7 @@ export default function WarehouseDetails() {
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
-                
+
                 {/* Data points */}
                 <circle cx="100" cy="150" r="4" fill="#8884d8" />
                 <circle cx="200" cy="120" r="4" fill="#8884d8" />
@@ -157,12 +190,24 @@ export default function WarehouseDetails() {
                 <circle cx="500" cy="110" r="4" fill="#8884d8" />
                 <circle cx="600" cy="130" r="4" fill="#8884d8" />
                 <circle cx="700" cy="125" r="4" fill="#8884d8" />
-                
+
                 {/* Prediction marker */}
-                <text x="500" y="95" fill="#8884d8" fontSize="14" fontFamily="Poppins">
+                <text
+                  x="500"
+                  y="95"
+                  fill="#8884d8"
+                  fontSize="14"
+                  fontFamily="Poppins"
+                >
                   2025-01-04
                 </text>
-                <text x="500" y="85" fill="#8884d8" fontSize="12" fontFamily="Poppins">
+                <text
+                  x="500"
+                  y="85"
+                  fill="#8884d8"
+                  fontSize="12"
+                  fontFamily="Poppins"
+                >
                   prediction: 61
                 </text>
               </svg>
@@ -178,7 +223,7 @@ export default function WarehouseDetails() {
               <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
                 Distribusi Supply STO
               </h2>
-              
+
               {/* Pie Chart Placeholder */}
               <div className="flex items-center justify-center h-64">
                 <svg width="200" height="200" viewBox="0 0 200 200">
@@ -218,11 +263,13 @@ export default function WarehouseDetails() {
                   />
                 </svg>
               </div>
-              
+
               {/* Legend */}
               <div className="bg-gray-200 rounded-2xl p-3 mt-4 text-center">
                 <div className="text-xs text-black font-poppins">STO-DPK :</div>
-                <div className="text-sm text-black font-poppins font-medium">12</div>
+                <div className="text-sm text-black font-poppins font-medium">
+                  12
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -233,18 +280,24 @@ export default function WarehouseDetails() {
               <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
                 Warehouse STO list
               </h2>
-              
+
               {/* Table Header */}
               <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="font-poppins text-xl font-semibold text-black">STO_id</div>
-                <div className="font-poppins text-xl font-semibold text-black">Predicted_supply</div>
-                <div className="font-poppins text-xl font-semibold text-black">Status</div>
+                <div className="font-poppins text-xl font-semibold text-black">
+                  STO_id
+                </div>
+                <div className="font-poppins text-xl font-semibold text-black">
+                  Predicted_supply
+                </div>
+                <div className="font-poppins text-xl font-semibold text-black">
+                  Status
+                </div>
               </div>
-              
+
               {/* Table Rows */}
               <div className="space-y-3">
                 {mockSTOData.map((item, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="grid grid-cols-3 gap-4 p-4 border border-black rounded-2xl bg-white items-center"
                   >
@@ -263,7 +316,7 @@ export default function WarehouseDetails() {
                     </div>
                   </div>
                 ))}
-                
+
                 {/* Empty rows for design consistency */}
                 <div className="grid grid-cols-3 gap-4 p-4 border border-black rounded-2xl bg-white">
                   <div></div>
@@ -276,7 +329,7 @@ export default function WarehouseDetails() {
                   <div></div>
                 </div>
               </div>
-              
+
               {/* Pagination */}
               <div className="flex items-center justify-between mt-6">
                 <Button

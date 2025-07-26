@@ -17,13 +17,13 @@ export default function InputSales() {
   const [formData, setFormData] = useState<SalesData>({
     stoId: "",
     tanggal: "",
-    totalBarangTerjual: ""
+    totalBarangTerjual: "",
   });
 
   const handleInputChange = (field: keyof SalesData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -71,7 +71,10 @@ export default function InputSales() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* STO ID Field */}
               <div className="space-y-2">
-                <Label htmlFor="stoId" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="stoId"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   STO ID
                 </Label>
                 <Input
@@ -87,7 +90,10 @@ export default function InputSales() {
 
               {/* Tanggal Field */}
               <div className="space-y-2">
-                <Label htmlFor="tanggal" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="tanggal"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Tanggal (DD-MM-YYYY)
                 </Label>
                 <Input
@@ -103,7 +109,10 @@ export default function InputSales() {
 
               {/* Total Barang Terjual Field */}
               <div className="space-y-2">
-                <Label htmlFor="totalBarangTerjual" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="totalBarangTerjual"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Total Barang Terjual
                 </Label>
                 <Input
@@ -111,7 +120,9 @@ export default function InputSales() {
                   type="number"
                   placeholder="5"
                   value={formData.totalBarangTerjual}
-                  onChange={(e) => handleInputChange("totalBarangTerjual", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("totalBarangTerjual", e.target.value)
+                  }
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                   required
                   min="0"

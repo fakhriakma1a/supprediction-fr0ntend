@@ -368,7 +368,11 @@ export default function WarehouseManage() {
                   <div className="flex justify-center">
                     <Button
                       variant="outline"
-                      onClick={() => navigate(`/warehouse-details/${encodeURIComponent(item.id)}`)}
+                      onClick={() =>
+                        navigate(
+                          `/warehouse-details/${encodeURIComponent(item.id)}`,
+                        )
+                      }
                       className="border-black rounded-2xl px-4 py-2 font-poppins font-bold text-xl hover:bg-gray-50"
                     >
                       <svg

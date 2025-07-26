@@ -30,17 +30,29 @@ function DataTable({ data }: { data: DataRecord[] }) {
       <table className="w-full">
         <thead>
           <tr className="text-left">
-            <th className="text-[20px] font-normal text-[#5C5757] pb-4 pl-8 font-poppins">STO_id</th>
-            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">Avg_sales</th>
-            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">Predicted_supply</th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 pl-8 font-poppins">
+              STO_id
+            </th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">
+              Avg_sales
+            </th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">
+              Predicted_supply
+            </th>
           </tr>
         </thead>
         <tbody>
           {data.map((record, index) => (
             <tr key={index} className="border-none">
-              <td className="text-[20px] font-normal text-black py-2 pl-8 font-poppins">{record.stoId}</td>
-              <td className="text-[20px] font-normal text-black py-2 font-poppins">{record.avgSales}</td>
-              <td className="text-[20px] font-normal text-black py-2 font-poppins">{record.predictedSupply}</td>
+              <td className="text-[20px] font-normal text-black py-2 pl-8 font-poppins">
+                {record.stoId}
+              </td>
+              <td className="text-[20px] font-normal text-black py-2 font-poppins">
+                {record.avgSales}
+              </td>
+              <td className="text-[20px] font-normal text-black py-2 font-poppins">
+                {record.predictedSupply}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -138,7 +150,8 @@ export default function Reports() {
                   Data Warehouse_supply
                 </h2>
                 <p className="text-[18px] font-light text-[#5C5757] mb-8 font-poppins">
-                  Data total prediksi supply Warehouse hasil dari prediksi tiap STO.
+                  Data total prediksi supply Warehouse hasil dari prediksi tiap
+                  STO.
                 </p>
               </div>
               <ExportButton />

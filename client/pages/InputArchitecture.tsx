@@ -19,13 +19,13 @@ export default function InputArchitecture() {
     stoId: "",
     arsitekturId: "",
     totalPort: "",
-    usedPort: ""
+    usedPort: "",
   });
 
   const handleInputChange = (field: keyof ArchitectureData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -73,7 +73,10 @@ export default function InputArchitecture() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* STO ID Field */}
               <div className="space-y-2">
-                <Label htmlFor="stoId" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="stoId"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   STO ID
                 </Label>
                 <Input
@@ -89,7 +92,10 @@ export default function InputArchitecture() {
 
               {/* Arsitektur ID Field */}
               <div className="space-y-2">
-                <Label htmlFor="arsitekturId" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="arsitekturId"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Arsitektur ID
                 </Label>
                 <Input
@@ -97,7 +103,9 @@ export default function InputArchitecture() {
                   type="text"
                   placeholder="e.g., ARCH001"
                   value={formData.arsitekturId}
-                  onChange={(e) => handleInputChange("arsitekturId", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("arsitekturId", e.target.value)
+                  }
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                   required
                 />
@@ -105,7 +113,10 @@ export default function InputArchitecture() {
 
               {/* Total Port Field */}
               <div className="space-y-2">
-                <Label htmlFor="totalPort" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="totalPort"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Total Port
                 </Label>
                 <Input
@@ -113,7 +124,9 @@ export default function InputArchitecture() {
                   type="number"
                   placeholder="100"
                   value={formData.totalPort}
-                  onChange={(e) => handleInputChange("totalPort", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("totalPort", e.target.value)
+                  }
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                   required
                   min="0"
@@ -122,7 +135,10 @@ export default function InputArchitecture() {
 
               {/* Used Port Field */}
               <div className="space-y-2">
-                <Label htmlFor="usedPort" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="usedPort"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Used Port
                 </Label>
                 <Input
@@ -130,7 +146,9 @@ export default function InputArchitecture() {
                   type="number"
                   placeholder="75"
                   value={formData.usedPort}
-                  onChange={(e) => handleInputChange("usedPort", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("usedPort", e.target.value)
+                  }
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                   required
                   min="0"

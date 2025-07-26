@@ -17,13 +17,13 @@ export default function InputMetadata() {
   const [formData, setFormData] = useState<MetadataData>({
     stoId: "",
     potensiKonsumen: "",
-    jarakKm: ""
+    jarakKm: "",
   });
 
   const handleInputChange = (field: keyof MetadataData, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -71,7 +71,10 @@ export default function InputMetadata() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* STO ID Field */}
               <div className="space-y-2">
-                <Label htmlFor="stoId" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="stoId"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   STO ID
                 </Label>
                 <Input
@@ -87,7 +90,10 @@ export default function InputMetadata() {
 
               {/* Potensi Konsumen Field */}
               <div className="space-y-2">
-                <Label htmlFor="potensiKonsumen" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="potensiKonsumen"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Potensi Konsumen (0-1)
                 </Label>
                 <Input
@@ -95,7 +101,9 @@ export default function InputMetadata() {
                   type="number"
                   placeholder="0.3"
                   value={formData.potensiKonsumen}
-                  onChange={(e) => handleInputChange("potensiKonsumen", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("potensiKonsumen", e.target.value)
+                  }
                   className="h-12 border-gray-300 rounded-xl font-poppins text-base"
                   required
                   step="0.1"
@@ -106,7 +114,10 @@ export default function InputMetadata() {
 
               {/* Jarak Field */}
               <div className="space-y-2">
-                <Label htmlFor="jarakKm" className="font-poppins text-lg font-medium text-black">
+                <Label
+                  htmlFor="jarakKm"
+                  className="font-poppins text-lg font-medium text-black"
+                >
                   Jarak (Km)
                 </Label>
                 <Input
