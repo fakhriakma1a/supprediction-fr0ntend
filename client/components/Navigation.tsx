@@ -243,7 +243,8 @@ export default function Navigation() {
         <div className="flex items-center justify-center bg-white border-4 border-sup-gray rounded-[40px] p-2 h-[88px]">
           <div className="flex items-center gap-8">
             {navigationItems.map((item, index) => {
-              const isActive = location.pathname === item.path;
+              const isActive = location.pathname === item.path ||
+                (item.path === "/sto-manage" && location.pathname.startsWith("/sto-details"));
               return (
                 <div key={item.id} className="flex flex-col items-center">
                   <Link
