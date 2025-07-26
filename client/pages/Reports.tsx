@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
-import RangeDropdown from "@/components/RangeDropdown";
-import UserDropdown from "@/components/UserDropdown";
 
 interface DataRecord {
   stoId: string;
