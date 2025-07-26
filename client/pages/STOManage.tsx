@@ -370,6 +370,49 @@ export default function STOManage() {
                       Details
                     </Button>
                   </div>
+                  <div className="flex justify-center">
+                    <Button
+                      variant="outline"
+                      onClick={() => navigate(`/sto-update/${item.id}`)}
+                      className="border-black rounded-2xl px-4 py-2 font-poppins font-bold text-lg hover:bg-gray-50"
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        className="mr-2"
+                      >
+                        <path
+                          d="M18.3334 5H3.33341C2.89139 5 2.46746 5.17559 2.1549 5.48816C1.84234 5.80072 1.66675 6.22464 1.66675 6.66667V10"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                        <path
+                          d="M1.66675 15H16.6667C17.1088 15 17.5327 14.8244 17.8453 14.5118C18.1578 14.1993 18.3334 13.7754 18.3334 13.3333V10"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                        <path
+                          d="M15 8.33334L18.3333 5.00001L15 1.66667"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M5.00008 11.6667L1.66675 15L5.00008 18.3333"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                      </svg>
+                      Update
+                    </Button>
+                  </div>
                 </div>
               ))}
             </div>
