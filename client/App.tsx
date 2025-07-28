@@ -39,7 +39,10 @@ export default function App() {
             <Route path="/sto-details/:id" element={<STODetails />} />
             <Route path="/sto-update/:id" element={<STOUpdateForm />} />
             <Route path="/warehouse-manage" element={<WarehouseManage />} />
-            <Route path="/warehouse-details/:id" element={<WarehouseDetails />} />
+            <Route
+              path="/warehouse-details/:id"
+              element={<WarehouseDetails />}
+            />
             <Route path="/input" element={<Input />} />
             <Route path="/input/sales" element={<InputSales />} />
             <Route path="/input/architecture" element={<InputArchitecture />} />
