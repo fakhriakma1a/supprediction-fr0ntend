@@ -291,7 +291,7 @@ export default function WarehouseManage() {
         <Card className="border-black rounded-xl">
           <CardContent className="p-0">
             {/* Table Header */}
-            <div className="grid grid-cols-4 gap-4 p-6 border-b">
+            <div className="grid grid-cols-3 gap-4 p-6 border-b">
               <div className="font-poppins text-xl font-semibold text-black">
                 WH_id
               </div>
@@ -300,40 +300,6 @@ export default function WarehouseManage() {
               </div>
               <div className="font-poppins text-xl font-semibold text-black">
                 Total_supply
-              </div>
-              <div className="flex justify-center">
-                <Button className="bg-green-400 hover:bg-green-500 text-black font-poppins font-bold rounded-2xl px-8 h-12">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="mr-2"
-                  >
-                    <path
-                      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                    <path
-                      d="M12 8V16"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                    <path
-                      d="M16 12H8"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                      strokeLinecap="square"
-                    />
-                  </svg>
-                  ADD WH
-                </Button>
               </div>
             </div>
 
