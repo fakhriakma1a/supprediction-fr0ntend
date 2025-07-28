@@ -332,10 +332,10 @@ export default function STOManage() {
                       {item.status}
                     </span>
                   </div>
-                  <div className="font-poppins text-lg text-black font-medium">
+                  <div className="font-poppins text-lg text-black font-medium text-center">
                     {item.avgMovingSales}
                   </div>
-                  <div className="font-poppins text-xl text-black font-medium">
+                  <div className="font-poppins text-xl text-black font-medium text-center">
                     {item.predictedSupply}
                   </div>
                   <div className="flex justify-center">
