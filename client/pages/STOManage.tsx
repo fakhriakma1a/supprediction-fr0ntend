@@ -318,7 +318,7 @@ export default function STOManage() {
               {filteredData.map((item, index) => (
                 <div
                   key={item.id}
-                  className="grid grid-cols-6 gap-4 p-4 items-center bg-white rounded-2xl"
+                  className="grid grid-cols-6 gap-8 p-4 items-center bg-white rounded-2xl"
                 >
                   <div className="font-poppins text-xl text-black font-medium">
                     {item.id}
