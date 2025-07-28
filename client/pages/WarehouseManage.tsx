@@ -311,7 +311,7 @@ export default function WarehouseManage() {
               {filteredData.map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  className="grid grid-cols-3 gap-4 p-4 items-center bg-white rounded-2xl"
+                  className="grid grid-cols-4 gap-4 p-4 items-center bg-white rounded-2xl"
                 >
                   <div className="font-poppins text-xl text-black font-medium">
                     {item.id}
@@ -327,6 +327,116 @@ export default function WarehouseManage() {
                   </div>
                   <div className="font-poppins text-xl text-black font-medium">
                     {item.totalSupply}
+                  </div>
+                  <div className="flex gap-0.5 justify-center">
+                    <Button
+                      variant="outline"
+                      onClick={() =>
+                        navigate(
+                          `/warehouse-details/${encodeURIComponent(item.id)}`,
+                        )
+                      }
+                      className="border-black rounded-xl px-2 py-1 font-poppins font-medium text-sm hover:bg-gray-50"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 32 28"
+                        fill="none"
+                        className="mr-0.5"
+                      >
+                        <path
+                          d="M16 17.5C18.2091 17.5 20 15.933 20 14C20 12.067 18.2091 10.5 16 10.5C13.7909 10.5 12 12.067 12 14C12 15.933 13.7909 17.5 16 17.5Z"
+                          fill="black"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M1.5 14C1.5 14 6.652 4.66667 16 4.66667C25.348 4.66667 30.5 14 30.5 14C30.5 14 25.3467 23.3333 16 23.3333C6.65333 23.3333 1.5 14 1.5 14Z"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                      </svg>
+                      Details
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="border-black rounded-xl px-2 py-1 font-poppins font-medium text-sm hover:bg-gray-50"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        className="mr-0.5"
+                      >
+                        <path
+                          d="M18.3334 5H3.33341C2.89139 5 2.46746 5.17559 2.1549 5.48816C1.84234 5.80072 1.66675 6.22464 1.66675 6.66667V10"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                        <path
+                          d="M1.66675 15H16.6667C17.1088 15 17.5327 14.8244 17.8453 14.5118C18.1578 14.1993 18.3334 13.7754 18.3334 13.3333V10"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                        <path
+                          d="M15 8.33334L18.3333 5.00001L15 1.66667"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M5.00008 11.6667L1.66675 15L5.00008 18.3333"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                      </svg>
+                      Update
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="border-black rounded-xl px-2 py-1 font-poppins font-medium text-sm hover:bg-gray-50"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        className="mr-0.5"
+                      >
+                        <path
+                          d="M15.6083 8.33334H15.625L15.275 16.7358C15.2375 17.6283 14.5033 18.3333 13.61 18.3333H6.39C5.49667 18.3333 4.76167 17.6292 4.725 16.7358L4.375 8.33334H4.39167"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M2.5 5H17.5"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M7.5 5.00001V1.66667H12.5V5.00001"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                      </svg>
+                      Delete
+                    </Button>
                   </div>
                 </div>
               ))}
