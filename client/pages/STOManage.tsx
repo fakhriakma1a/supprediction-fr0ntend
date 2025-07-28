@@ -299,7 +299,7 @@ export default function STOManage() {
               <div className="font-poppins text-xl font-semibold text-black">
                 Status
               </div>
-              <div className="font-poppins text-xl font-semibold text-black">
+              <div className="font-poppins text-xl font-semibold text-black text-center">
                 Avg_moving_sales
               </div>
               <div className="font-poppins text-xl font-semibold text-black text-center">
