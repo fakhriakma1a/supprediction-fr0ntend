@@ -291,7 +291,7 @@ export default function WarehouseManage() {
         <Card className="border-black rounded-xl">
           <CardContent className="p-0">
             {/* Table Header */}
-            <div className="grid grid-cols-3 gap-4 p-6 border-b">
+            <div className="grid grid-cols-4 gap-4 p-6 border-b">
               <div className="font-poppins text-xl font-semibold text-black">
                 WH_id
               </div>
@@ -300,6 +300,9 @@ export default function WarehouseManage() {
               </div>
               <div className="font-poppins text-xl font-semibold text-black">
                 Total_supply
+              </div>
+              <div className="font-poppins text-xl font-semibold text-black text-center">
+                Actions
               </div>
             </div>
 
