@@ -103,7 +103,7 @@ export default function STOManage() {
               </svg>
             </div>
             <Input
-              placeholder="Search Warehouse ID..."
+              placeholder="Search STO ID..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-12 h-12 border-black rounded-3xl font-poppins"
@@ -342,14 +342,14 @@ export default function STOManage() {
                     <Button
                       variant="outline"
                       onClick={() => navigate(`/sto-details/${item.id}`)}
-                      className="border-black rounded-2xl px-4 py-2 font-poppins font-bold text-xl hover:bg-gray-50"
+                      className="border-black rounded-xl px-2 py-1 font-poppins font-medium text-sm hover:bg-gray-50"
                     >
                       <svg
-                        width="24"
-                        height="20"
+                        width="14"
+                        height="14"
                         viewBox="0 0 32 28"
                         fill="none"
-                        className="mr-2"
+                        className="mr-0.5"
                       >
                         <path
                           d="M16 17.5C18.2091 17.5 20 15.933 20 14C20 12.067 18.2091 10.5 16 10.5C13.7909 10.5 12 12.067 12 14C12 15.933 13.7909 17.5 16 17.5Z"
@@ -370,18 +370,18 @@ export default function STOManage() {
                       Details
                     </Button>
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex gap-0.5 justify-center">
                     <Button
                       variant="outline"
                       onClick={() => navigate(`/sto-update/${item.id}`)}
-                      className="border-black rounded-2xl px-4 py-2 font-poppins font-bold text-lg hover:bg-gray-50"
+                      className="border-black rounded-xl px-2 py-1 font-poppins font-medium text-sm hover:bg-gray-50"
                     >
                       <svg
-                        width="20"
-                        height="20"
+                        width="14"
+                        height="14"
                         viewBox="0 0 20 20"
                         fill="none"
-                        className="mr-2"
+                        className="mr-0.5"
                       >
                         <path
                           d="M18.3334 5H3.33341C2.89139 5 2.46746 5.17559 2.1549 5.48816C1.84234 5.80072 1.66675 6.22464 1.66675 6.66667V10"
@@ -411,6 +411,40 @@ export default function STOManage() {
                         />
                       </svg>
                       Update
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="border-black rounded-xl px-2 py-1 font-poppins font-medium text-sm hover:bg-gray-50"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        className="mr-0.5"
+                      >
+                        <path
+                          d="M15.6083 8.33334H15.625L15.275 16.7358C15.2375 17.6283 14.5033 18.3333 13.61 18.3333H6.39C5.49667 18.3333 4.76167 17.6292 4.725 16.7358L4.375 8.33334H4.39167"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M2.5 5H17.5"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                          strokeLinecap="square"
+                        />
+                        <path
+                          d="M7.5 5.00001V1.66667H12.5V5.00001"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                      </svg>
+                      Delete
                     </Button>
                   </div>
                 </div>
