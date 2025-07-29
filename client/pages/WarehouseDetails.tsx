@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from 'recharts';
+import { usePredictionRange } from '@/hooks/usePredictionRange';
 
 interface STORecord {
   id: string;
@@ -24,44 +25,33 @@ interface CustomTooltipProps {
   label?: string;
 }
 
-// Sample data for warehouse supply trend chart - replace with real data from API/backend
-const warehouseChartData = [
-  {
-    date: '2025-01-20',
-    actual: 45,
-    predicted: 42,
-  },
-  {
-    date: '2025-01-21',
-    actual: 52,
-    predicted: 48,
-  },
-  {
-    date: '2025-01-22',
-    actual: 50,
-    predicted: 47,
-  },
-  {
-    date: '2025-01-23',
-    actual: 38,
-    predicted: 41,
-  },
-  {
-    date: '2025-01-24',
-    actual: 35,
-    predicted: 39,
-  },
-  {
-    date: '2025-01-25',
-    actual: 42,
-    predicted: 43,
-  },
-  {
-    date: '2025-01-26',
-    actual: 46,
-    predicted: 45,
-  },
-];
+// Generate dynamic chart data based on range
+const generateWarehouseSupplyData = (range: 'daily' | 'weekly' | 'monthly') => {
+  const baseData = {
+    daily: [
+      { date: '2025-01-20', actual: 45, predicted: 42 },
+      { date: '2025-01-21', actual: 52, predicted: 48 },
+      { date: '2025-01-22', actual: 50, predicted: 47 },
+      { date: '2025-01-23', actual: 38, predicted: 41 },
+      { date: '2025-01-24', actual: 35, predicted: 39 },
+      { date: '2025-01-25', actual: 42, predicted: 43 },
+      { date: '2025-01-26', actual: 46, predicted: 45 },
+    ],
+    weekly: [
+      { date: 'Week 1', actual: 318, predicted: 315 },
+      { date: 'Week 2', actual: 295, predicted: 301 },
+      { date: 'Week 3', actual: 342, predicted: 338 },
+      { date: 'Week 4', actual: 289, predicted: 294 },
+    ],
+    monthly: [
+      { date: 'Jan 2025', actual: 1244, predicted: 1248 },
+      { date: 'Feb 2025', actual: 1167, predicted: 1189 },
+      { date: 'Mar 2025', actual: 1356, predicted: 1334 },
+    ]
+  };
+  
+  return baseData[range];
+};
 
 // Custom Tooltip Component for hover information
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
@@ -92,6 +82,13 @@ const mockSTOData: STORecord[] = [
   { id: "TGR", predictedSupply: 18, status: "High demand" },
 ];
 
+// Supply distribution pie chart data
+const supplyDistributionData = [
+  { name: 'JGL', value: 12, color: '#76FF45' },
+  { name: 'DPK', value: 6, color: '#F82D2D' },
+  { name: 'TGR', value: 18, color: '#4C2CFF' },
+];
+
 const getSTOStatusColor = (status: string) => {
   switch (status) {
     case "Normal":
@@ -109,6 +106,10 @@ export default function WarehouseDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
+  const { range, rangeLabel } = usePredictionRange();
+
+  // Generate chart data based on current range
+  const chartData = useMemo(() => generateWarehouseSupplyData(range), [range]);
 
   // Mock warehouse data
   const warehouseInfo = {
@@ -130,28 +131,35 @@ export default function WarehouseDetails() {
           <h1 className="font-poppins text-4xl md:text-5xl font-bold text-black">
             WAREHOUSE Details
           </h1>
-          <Button
-            onClick={() => navigate("/warehouse-manage")}
-            className="bg-sup-red hover:bg-red-600 text-black font-poppins font-medium text-lg px-6 py-3 rounded-2xl flex items-center gap-3"
-          >
-            <svg width="20" height="18" viewBox="0 0 20 19" fill="none">
-              <path
-                d="M17 9.32178H3"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 4.80005L3 9.32179L8 13.8435"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            Back to List
-          </Button>
+          <div className="flex items-center gap-4">
+            <div className="bg-sup-gray px-4 py-2 rounded-xl">
+              <span className="font-poppins text-lg font-semibold text-black">
+                {rangeLabel} View
+              </span>
+            </div>
+            <Button
+              onClick={() => navigate("/warehouse-manage")}
+              className="bg-sup-red hover:bg-red-600 text-black font-poppins font-medium text-lg px-6 py-3 rounded-2xl flex items-center gap-3"
+            >
+              <svg width="20" height="18" viewBox="0 0 20 19" fill="none">
+                <path
+                  d="M17 9.32178H3"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8 4.80005L3 9.32179L8 13.8435"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Back to List
+            </Button>
+          </div>
         </div>
 
         {/* Warehouse Information Card */}
@@ -218,15 +226,22 @@ export default function WarehouseDetails() {
         {/* Chart Section */}
         <Card className="chart-shadow rounded-3xl bg-white mb-8">
           <CardContent className="p-8">
-            <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
-              Warehouse Total Supply Trend Prediction
-            </h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black">
+                Warehouse Total Supply Trend Prediction
+              </h2>
+              <div className="bg-sup-gray px-4 py-2 rounded-xl">
+                <span className="font-poppins text-lg font-semibold text-black">
+                  {rangeLabel} Prediction
+                </span>
+              </div>
+            </div>
 
             {/* Interactive Chart Container */}
             <div className="relative h-96 bg-gradient-to-b from-blue-50 to-blue-100 rounded-2xl p-6">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                  data={warehouseChartData}
+                  data={chartData}
                   margin={{
                     top: 20,
                     right: 30,
@@ -239,7 +254,12 @@ export default function WarehouseDetails() {
                     dataKey="date" 
                     stroke="#6b7280"
                     fontSize={12}
-                    tickFormatter={(value) => value.split('-')[2]} // Show only day
+                    tickFormatter={(value) => {
+                      if (range === 'daily') {
+                        return value.split('-')[2]; // Show only day
+                      }
+                      return value; // Show full label for weekly/monthly
+                    }}
                     className="font-poppins"
                   />
                   <YAxis 
@@ -305,55 +325,29 @@ export default function WarehouseDetails() {
           <Card className="rounded-3xl shadow-lg">
             <CardContent className="p-8">
               <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
-                Distribusi Supply STO
+                Distribusi Supply STO ({rangeLabel})
               </h2>
 
-              {/* Pie Chart Placeholder */}
+              {/* Enhanced Pie Chart */}
               <div className="flex items-center justify-center h-64">
-                <svg width="200" height="200" viewBox="0 0 200 200">
-                  {/* Pie chart segments */}
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="80"
-                    fill="none"
-                    stroke="#76FF45"
-                    strokeWidth="40"
-                    strokeDasharray="125.6 377"
-                    strokeDashoffset="0"
-                    transform="rotate(-90 100 100)"
-                  />
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="80"
-                    fill="none"
-                    stroke="#F82D2D"
-                    strokeWidth="40"
-                    strokeDasharray="87.9 377"
-                    strokeDashoffset="-125.6"
-                    transform="rotate(-90 100 100)"
-                  />
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="80"
-                    fill="none"
-                    stroke="#4C2CFF"
-                    strokeWidth="40"
-                    strokeDasharray="163.5 377"
-                    strokeDashoffset="-213.5"
-                    transform="rotate(-90 100 100)"
-                  />
-                </svg>
-              </div>
-
-              {/* Legend */}
-              <div className="bg-gray-200 rounded-2xl p-3 mt-4 text-center">
-                <div className="text-xs text-black font-poppins">STO-DPK :</div>
-                <div className="text-sm text-black font-poppins font-medium">
-                  12
-                </div>
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={supplyDistributionData}
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={80}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {supplyDistributionData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip formatter={(value, name) => [`${value} units`, name]} />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
               </div>
             </CardContent>
           </Card>
@@ -362,7 +356,7 @@ export default function WarehouseDetails() {
           <Card className="rounded-3xl shadow-lg">
             <CardContent className="p-8">
               <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
-                Warehouse STO list
+                Warehouse STO list ({rangeLabel})
               </h2>
 
               {/* Table Header */}

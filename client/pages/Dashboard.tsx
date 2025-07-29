@@ -2,8 +2,10 @@ import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Package, TrendingUp, AlertTriangle, MapPin, Database } from 'lucide-react';
+import { usePredictionRange } from '@/hooks/usePredictionRange';
+import { useMemo } from 'react';
 
-// TypeScript interfaces untuk Tooltip
+// TypeScript interfaces for Tooltip
 interface TooltipPayload {
   name: string;
   value: number;
@@ -16,46 +18,35 @@ interface CustomTooltipProps {
   label?: string;
 }
 
-// Sample data untuk grafik - ganti dengan data asli dari API/backend Anda
-const chartData = [
-  {
-    date: '2025-01-01',
-    actual: 45,
-    predicted: 42,
-  },
-  {
-    date: '2025-01-02',
-    actual: 52,
-    predicted: 48,
-  },
-  {
-    date: '2025-01-03',
-    actual: 50,
-    predicted: 41,
-  },
-  {
-    date: '2025-01-04',
-    actual: 61,
-    predicted: 58,
-  },
-  {
-    date: '2025-01-05',
-    actual: 55,
-    predicted: 52,
-  },
-  {
-    date: '2025-01-06',
-    actual: 67,
-    predicted: 63,
-  },
-  {
-    date: '2025-01-07',
-    actual: 43,
-    predicted: 47,
-  },
-];
+// Generate dynamic chart data based on range
+const generateChartData = (range: 'daily' | 'weekly' | 'monthly') => {
+  const baseData = {
+    daily: [
+      { date: '2025-01-01', actual: 45, predicted: 42 },
+      { date: '2025-01-02', actual: 52, predicted: 48 },
+      { date: '2025-01-03', actual: 50, predicted: 41 },
+      { date: '2025-01-04', actual: 61, predicted: 58 },
+      { date: '2025-01-05', actual: 55, predicted: 52 },
+      { date: '2025-01-06', actual: 67, predicted: 63 },
+      { date: '2025-01-07', actual: 43, predicted: 47 },
+    ],
+    weekly: [
+      { date: 'Week 1', actual: 315, predicted: 308 },
+      { date: 'Week 2', actual: 342, predicted: 335 },
+      { date: 'Week 3', actual: 298, predicted: 305 },
+      { date: 'Week 4', actual: 385, predicted: 378 },
+    ],
+    monthly: [
+      { date: 'Jan 2025', actual: 1340, predicted: 1326 },
+      { date: 'Feb 2025', actual: 1256, predicted: 1289 },
+      { date: 'Mar 2025', actual: 1445, predicted: 1423 },
+    ]
+  };
+  
+  return baseData[range];
+};
 
-// Custom Tooltip Component untuk menampilkan info saat hover
+// Custom Tooltip Component
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -135,6 +126,11 @@ const warehouseLeaderboard = [
 ];
 
 export default function Dashboard() {
+  const { range, rangeLabel } = usePredictionRange();
+  
+  // Generate chart data based on current range
+  const chartData = useMemo(() => generateChartData(range), [range]);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -177,12 +173,19 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* Interactive Chart Section - BAGIAN YANG DIUBAH */}
+          {/* Interactive Chart Section */}
           <Card className="chart-shadow rounded-3xl bg-white">
             <CardContent className="p-8">
-              <h3 className="font-poppins text-4xl font-semibold text-black mb-6">
-                Supply Predictions vs Actual Graph
-              </h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-poppins text-4xl font-semibold text-black">
+                  Supply Predictions vs Actual Graph
+                </h3>
+                <div className="bg-sup-gray px-4 py-2 rounded-xl">
+                  <span className="font-poppins text-lg font-semibold text-black">
+                    {rangeLabel} View
+                  </span>
+                </div>
+              </div>
 
               {/* Interactive Chart Container */}
               <div className="relative h-96 bg-gradient-to-b from-blue-50 to-blue-100 rounded-2xl p-6">
@@ -201,7 +204,12 @@ export default function Dashboard() {
                       dataKey="date" 
                       stroke="#6b7280"
                       fontSize={12}
-                      tickFormatter={(value) => value.split('-')[2]} // Show only day
+                      tickFormatter={(value) => {
+                        if (range === 'daily') {
+                          return value.split('-')[2]; // Show only day
+                        }
+                        return value; // Show full label for weekly/monthly
+                      }}
                       className="font-poppins"
                     />
                     <YAxis 
