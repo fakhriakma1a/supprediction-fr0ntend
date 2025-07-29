@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { CustomTooltip } from "@/components/CustomTooltip";
 
 interface STOInfo {
   id: string;
@@ -71,6 +73,45 @@ const mockODPData: ODPData[] = [
     totalPort: 8,
     usedPort: 2,
     status: "Available",
+  },
+];
+
+// Sales trend chart data for Recharts
+const salesTrendData = [
+  {
+    date: '2025-01-01',
+    sales: 4,
+    predicted: 3.8,
+  },
+  {
+    date: '2025-01-02',
+    sales: 3,
+    predicted: 3.2,
+  },
+  {
+    date: '2025-01-03',
+    sales: 2,
+    predicted: 2.5,
+  },
+  {
+    date: '2025-01-04',
+    sales: 6,
+    predicted: 5.8,
+  },
+  {
+    date: '2025-01-05',
+    sales: 5,
+    predicted: 4.9,
+  },
+  {
+    date: '2025-01-06',
+    sales: null,
+    predicted: 5.2,
+  },
+  {
+    date: '2025-01-07',
+    sales: null,
+    predicted: 4.6,
   },
 ];
 
@@ -259,36 +300,87 @@ export default function STODetails() {
         </Card>
 
         {/* Sales Trend Prediction Card */}
-        <Card className="sup-shadow rounded-3xl">
+        <Card className="chart-shadow rounded-3xl">
           <CardContent className="p-8">
             <h2 className="font-poppins text-3xl font-medium text-black mb-6">
               STO's Sales Trend Prediction
             </h2>
-            <div className="h-80 bg-gray-50 rounded-3xl flex items-center justify-center">
-              {/* Simplified chart representation */}
-              <div className="relative w-full h-full p-8">
-                <div className="absolute bottom-8 left-8 right-8 h-px bg-gray-300"></div>
-                <div className="absolute left-8 top-8 bottom-8 w-px bg-gray-300"></div>
-
-                {/* Trend line simulation */}
-                <svg
-                  className="absolute inset-8"
-                  viewBox="0 0 400 200"
-                  preserveAspectRatio="none"
+            
+            {/* Interactive Chart Container */}
+            <div className="relative h-96 bg-gradient-to-b from-blue-50 to-blue-100 rounded-2xl p-6">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={salesTrendData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 20,
+                  }}
                 >
-                  <path
-                    d="M0 120 L50 100 L100 80 L150 90 L200 70 L250 85 L300 75 L350 80 L400 75"
-                    fill="none"
-                    stroke="#8884d8"
-                    strokeWidth="3"
-                    strokeLinecap="round"
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    tickFormatter={(value) => value.split('-')[2]} // Show only day
+                    className="font-poppins"
                   />
-                </svg>
-
-                <div className="absolute bottom-2 right-8 bg-white px-2 py-1 rounded text-sm font-poppins text-gray-600">
-                  2025-01-04 prediction: 61
-                </div>
-              </div>
+                  <YAxis 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    className="font-poppins"
+                  />
+                  
+                  {/* Custom Tooltip */}
+                  <Tooltip 
+                    content={<CustomTooltip />}
+                    cursor={{ stroke: '#3b82f6', strokeWidth: 1, strokeDasharray: '5 5' }}
+                  />
+                  
+                  {/* Legend */}
+                  <Legend 
+                    verticalAlign="top" 
+                    height={36}
+                    iconType="circle"
+                    wrapperStyle={{ fontFamily: 'Poppins' }}
+                  />
+                  
+                  {/* Sales Data Line */}
+                  <Line
+                    type="monotone"
+                    dataKey="sales"
+                    name="Sales"
+                    stroke="#6b7280"
+                    strokeWidth={3}
+                    dot={{ fill: '#6b7280', strokeWidth: 2, r: 4 }}
+                    activeDot={{ 
+                      r: 6, 
+                      fill: '#6b7280',
+                      stroke: '#ffffff',
+                      strokeWidth: 2
+                    }}
+                    connectNulls={false}
+                  />
+                  
+                  {/* Predicted Sales Line */}
+                  <Line
+                    type="monotone"
+                    dataKey="predicted"
+                    name="Predicted"
+                    stroke="#10b981"
+                    strokeWidth={3}
+                    dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                    activeDot={{ 
+                      r: 6, 
+                      fill: '#10b981',
+                      stroke: '#ffffff',
+                      strokeWidth: 2
+                    }}
+                    connectNulls={true}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </CardContent>
         </Card>
