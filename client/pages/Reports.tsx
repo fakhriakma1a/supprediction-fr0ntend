@@ -8,6 +8,12 @@ interface DataRecord {
   predictedSupply: number;
 }
 
+interface WarehouseRecord {
+  warehouseId: string;
+  stoConnected: number;
+  totalSupply: number;
+}
+
 const finalPemodelanData: DataRecord[] = [
   { stoId: "JKT", avgSales: 9.8, predictedSupply: 15 },
   { stoId: "BGR", avgSales: 8.5, predictedSupply: 12 },
@@ -16,12 +22,12 @@ const finalPemodelanData: DataRecord[] = [
   { stoId: "TNB", avgSales: 8.1, predictedSupply: 10 },
 ];
 
-const warehouseSupplyData: DataRecord[] = [
-  { stoId: "JKT", avgSales: 9.8, predictedSupply: 15 },
-  { stoId: "BGR", avgSales: 8.5, predictedSupply: 12 },
-  { stoId: "DPK", avgSales: 7.2, predictedSupply: 8 },
-  { stoId: "JGL", avgSales: 4.2, predictedSupply: 5 },
-  { stoId: "TNB", avgSales: 8.1, predictedSupply: 10 },
+const warehouseSupplyData: WarehouseRecord[] = [
+  { warehouseId: "CILEUNGSI WH", stoConnected: 10, totalSupply: 20 },
+  { warehouseId: "DEPOK WH", stoConnected: 12, totalSupply: 23 },
+  { warehouseId: "MATARAM WH", stoConnected: 7, totalSupply: 18 },
+  { warehouseId: "GAMBIR WH", stoConnected: 13, totalSupply: 25 },
+  { warehouseId: "MAUMERE WH", stoConnected: 4, totalSupply: 10 },
 ];
 
 function DataTable({ data }: { data: DataRecord[] }) {
@@ -52,6 +58,43 @@ function DataTable({ data }: { data: DataRecord[] }) {
               </td>
               <td className="text-[20px] font-normal text-black py-2 font-poppins">
                 {record.predictedSupply}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function WarehouseTable({ data }: { data: WarehouseRecord[] }) {
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full">
+        <thead>
+          <tr className="text-left">
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 pl-8 font-poppins">
+              Warehouse_id
+            </th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">
+              STO Connected
+            </th>
+            <th className="text-[20px] font-normal text-[#5C5757] pb-4 font-poppins">
+              Total_supply
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((record, index) => (
+            <tr key={index} className="border-none">
+              <td className="text-[20px] font-normal text-black py-2 pl-8 font-poppins">
+                {record.warehouseId}
+              </td>
+              <td className="text-[20px] font-normal text-black py-2 font-poppins">
+                {record.stoConnected}
+              </td>
+              <td className="text-[20px] font-normal text-black py-2 font-poppins">
+                {record.totalSupply}
               </td>
             </tr>
           ))}
@@ -157,7 +200,7 @@ export default function Reports() {
               <ExportButton />
             </div>
 
-            <DataTable data={warehouseSupplyData} />
+            <WarehouseTable data={warehouseSupplyData} />
 
             <p className="text-[18px] font-light text-[#5C5757] mt-8 pl-8 font-poppins">
               Showing preview 5 of 480 records.

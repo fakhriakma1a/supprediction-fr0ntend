@@ -292,7 +292,7 @@ export default function STOManage() {
         <Card className="border-black rounded-xl">
           <CardContent className="p-0">
             {/* Table Header */}
-            <div className="grid grid-cols-6 gap-8 p-6 border-b">
+            <div className="grid grid-cols-5 gap-8 p-6 border-b">
               <div className="font-poppins text-xl font-semibold text-black">
                 STO id
               </div>
@@ -306,9 +306,6 @@ export default function STOManage() {
                 Predicted Supply
               </div>
               <div className="font-poppins text-xl font-semibold text-black text-center">
-                Details
-              </div>
-              <div className="font-poppins text-xl font-semibold text-black text-center">
                 Actions
               </div>
             </div>
@@ -318,7 +315,7 @@ export default function STOManage() {
               {filteredData.map((item, index) => (
                 <div
                   key={item.id}
-                  className="grid grid-cols-6 gap-8 p-4 items-center bg-white rounded-2xl"
+                  className="grid grid-cols-5 gap-8 p-4 items-center bg-white rounded-2xl"
                 >
                   <div className="font-poppins text-xl text-black font-medium">
                     {item.id}
@@ -338,7 +335,7 @@ export default function STOManage() {
                   <div className="font-poppins text-xl text-black font-medium text-center">
                     {item.predictedSupply}
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex gap-0.5 justify-center">
                     <Button
                       variant="outline"
                       onClick={() => navigate(`/sto-details/${item.id}`)}
@@ -369,8 +366,6 @@ export default function STOManage() {
                       </svg>
                       Details
                     </Button>
-                  </div>
-                  <div className="flex gap-0.5 justify-center">
                     <Button
                       variant="outline"
                       onClick={() => navigate(`/sto-update/${item.id}`)}

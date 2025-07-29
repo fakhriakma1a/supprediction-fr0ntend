@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { Package, TrendingUp, AlertTriangle, MapPin, Database } from 'lucide-react';
 
 // TypeScript interfaces untuk Tooltip
 interface TooltipPayload {
@@ -83,130 +84,36 @@ const metricsData = [
     title: "Total STO",
     value: "2172",
     icon: (
-      <svg
-        width="60"
-        height="60"
-        viewBox="0 0 60 60"
-        fill="none"
-        className="text-green-600"
-      >
-        <rect
-          width="60"
-          height="60"
-          rx="8"
-          fill="currentColor"
-          fillOpacity="0.1"
-        />
-        <path
-          d="M30 42C36.6274 42 42 36.6274 42 30C42 23.3726 36.6274 18 30 18C23.3726 18 18 23.3726 18 30C18 36.6274 23.3726 42 30 42Z"
-          fill="currentColor"
-        />
-        <path d="M27 25L35 30L27 35V25Z" fill="white" />
-      </svg>
+      <div className="w-15 h-15 rounded-lg bg-blue-100 flex items-center justify-center">
+        <MapPin className="w-16 h-16 text-blue-600" />
+      </div>
     ),
   },
   {
     title: "Total Warehouse",
     value: "473",
     icon: (
-      <svg
-        width="60"
-        height="60"
-        viewBox="0 0 60 60"
-        fill="none"
-        className="text-blue-600"
-      >
-        <rect
-          width="60"
-          height="60"
-          rx="8"
-          fill="currentColor"
-          fillOpacity="0.1"
-        />
-        <path
-          d="M15 22.5L30 15L45 22.5"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeMiterlimit="10"
-        />
-        <path
-          d="M21 26.25V37.5C21 39.0975 22.0975 40.5 23.25 40.5H36.75C37.9025 40.5 39 39.0975 39 37.5V26.25"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeMiterlimit="10"
-          strokeLinecap="square"
-        />
-        <path
-          d="M15 22.5L19.5 25.125L30 18.75L40.5 25.125L45 22.5L30 15L15 22.5Z"
-          fill="currentColor"
-          fillOpacity="0.3"
-        />
-      </svg>
+      <div className="w-15 h-15 rounded-lg bg-green-100 flex items-center justify-center">
+        <Package className="w-16 h-16 text-green-600" />
+      </div>
     ),
   },
   {
     title: "Warehouse on Alert",
     value: "12",
     icon: (
-      <svg
-        width="60"
-        height="60"
-        viewBox="0 0 60 60"
-        fill="none"
-        className="text-red-600"
-      >
-        <rect
-          width="60"
-          height="60"
-          rx="8"
-          fill="currentColor"
-          fillOpacity="0.1"
-        />
-        <path
-          d="M30 15L39 39H21L30 15Z"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M30 24V33"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-        <circle cx="30" cy="36" r="1.5" fill="currentColor" />
-      </svg>
+      <div className="w-15 h-15 rounded-lg bg-red-100 flex items-center justify-center">
+        <AlertTriangle className="w-16 h-16 text-red-600" />
+      </div>
     ),
   },
   {
     title: "Prediction Accuracy",
     value: "92.5%",
     icon: (
-      <svg
-        width="60"
-        height="60"
-        viewBox="0 0 60 60"
-        fill="none"
-        className="text-purple-600"
-      >
-        <rect
-          width="60"
-          height="60"
-          rx="8"
-          fill="currentColor"
-          fillOpacity="0.1"
-        />
-        <path d="M15 45L45 15" stroke="currentColor" strokeWidth="3" />
-        <path
-          d="M15 30L27 18L37.5 28.5L45 21"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="27" cy="18" r="3" fill="currentColor" />
-        <circle cx="37.5" cy="28.5" r="3" fill="currentColor" />
-      </svg>
+      <div className="w-15 h-15 rounded-lg bg-purple-100 flex items-center justify-center">
+        <TrendingUp className="w-16 h-16 text-purple-600" />
+      </div>
     ),
   },
 ];

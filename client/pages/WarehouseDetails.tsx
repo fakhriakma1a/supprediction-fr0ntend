@@ -3,12 +3,88 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 interface STORecord {
   id: string;
   predictedSupply: number;
   status: "Normal" | "Low demand" | "High demand";
 }
+
+// TypeScript interfaces for Tooltip
+interface TooltipPayload {
+  name: string;
+  value: number;
+  color: string;
+}
+
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: TooltipPayload[];
+  label?: string;
+}
+
+// Sample data for warehouse supply trend chart - replace with real data from API/backend
+const warehouseChartData = [
+  {
+    date: '2025-01-20',
+    actual: 45,
+    predicted: 42,
+  },
+  {
+    date: '2025-01-21',
+    actual: 52,
+    predicted: 48,
+  },
+  {
+    date: '2025-01-22',
+    actual: 50,
+    predicted: 47,
+  },
+  {
+    date: '2025-01-23',
+    actual: 38,
+    predicted: 41,
+  },
+  {
+    date: '2025-01-24',
+    actual: 35,
+    predicted: 39,
+  },
+  {
+    date: '2025-01-25',
+    actual: 42,
+    predicted: 43,
+  },
+  {
+    date: '2025-01-26',
+    actual: 46,
+    predicted: 45,
+  },
+];
+
+// Custom Tooltip Component for hover information
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 min-w-32">
+        <p className="text-gray-600 text-sm font-poppins mb-2">{label}</p>
+        {payload.map((entry, index) => (
+          <div key={index} className="flex items-center gap-2 mb-1">
+            <div 
+              className="w-3 h-3 rounded"
+              style={{ backgroundColor: entry.color }}
+            ></div>
+            <span className="text-sm font-poppins font-medium" style={{ color: entry.color }}>
+              {entry.name === 'actual' ? 'Actual' : 'Predicted'}: {entry.value}
+            </span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
 
 const mockSTOData: STORecord[] = [
   { id: "JGL", predictedSupply: 12, status: "Normal" },
@@ -140,77 +216,85 @@ export default function WarehouseDetails() {
         </Card>
 
         {/* Chart Section */}
-        <Card className="rounded-3xl shadow-lg mb-8">
+        <Card className="chart-shadow rounded-3xl bg-white mb-8">
           <CardContent className="p-8">
             <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
               Warehouse Total Supply Trend Prediction
             </h2>
 
-            {/* Chart Placeholder */}
-            <div className="relative h-72 bg-gray-50 rounded-2xl flex items-center justify-center">
-              {/* Line Chart SVG */}
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 800 300"
-                className="absolute inset-0"
-              >
-                {/* Grid lines */}
-                <defs>
-                  <pattern
-                    id="grid"
-                    width="80"
-                    height="50"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 80 0 L 0 0 0 50"
-                      fill="none"
-                      stroke="#e5e7eb"
-                      strokeWidth="1"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-
-                {/* Chart line */}
-                <path
-                  d="M 100 150 L 200 120 L 300 140 L 400 100 L 500 110 L 600 130 L 700 125"
-                  fill="none"
-                  stroke="#8884d8"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-
-                {/* Data points */}
-                <circle cx="100" cy="150" r="4" fill="#8884d8" />
-                <circle cx="200" cy="120" r="4" fill="#8884d8" />
-                <circle cx="300" cy="140" r="4" fill="#8884d8" />
-                <circle cx="400" cy="100" r="4" fill="#8884d8" />
-                <circle cx="500" cy="110" r="4" fill="#8884d8" />
-                <circle cx="600" cy="130" r="4" fill="#8884d8" />
-                <circle cx="700" cy="125" r="4" fill="#8884d8" />
-
-                {/* Prediction marker */}
-                <text
-                  x="500"
-                  y="95"
-                  fill="#8884d8"
-                  fontSize="14"
-                  fontFamily="Poppins"
+            {/* Interactive Chart Container */}
+            <div className="relative h-96 bg-gradient-to-b from-blue-50 to-blue-100 rounded-2xl p-6">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={warehouseChartData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 20,
+                  }}
                 >
-                  2025-01-04
-                </text>
-                <text
-                  x="500"
-                  y="85"
-                  fill="#8884d8"
-                  fontSize="12"
-                  fontFamily="Poppins"
-                >
-                  prediction: 61
-                </text>
-              </svg>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    tickFormatter={(value) => value.split('-')[2]} // Show only day
+                    className="font-poppins"
+                  />
+                  <YAxis 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    className="font-poppins"
+                  />
+                  
+                  {/* Custom Tooltip */}
+                  <Tooltip 
+                    content={<CustomTooltip />}
+                    cursor={{ stroke: '#3b82f6', strokeWidth: 1, strokeDasharray: '5 5' }}
+                  />
+                  
+                  {/* Legend */}
+                  <Legend 
+                    verticalAlign="top" 
+                    height={36}
+                    iconType="circle"
+                    wrapperStyle={{ fontFamily: 'Poppins' }}
+                  />
+                  
+                  {/* Actual Data Line */}
+                  <Line
+                    type="monotone"
+                    dataKey="actual"
+                    name="Actual"
+                    stroke="#6b7280"
+                    strokeWidth={3}
+                    dot={{ fill: '#6b7280', strokeWidth: 2, r: 4 }}
+                    activeDot={{ 
+                      r: 6, 
+                      fill: '#6b7280',
+                      stroke: '#ffffff',
+                      strokeWidth: 2
+                    }}
+                  />
+                  
+                  {/* Predicted Data Line */}
+                  <Line
+                    type="monotone"
+                    dataKey="predicted"
+                    name="Predicted"
+                    stroke="#10b981"
+                    strokeWidth={3}
+                    dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                    activeDot={{ 
+                      r: 6, 
+                      fill: '#10b981',
+                      stroke: '#ffffff',
+                      strokeWidth: 2
+                    }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </CardContent>
         </Card>
