@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 import UserDropdown from "./UserDropdown";
 import RangeDropdown from "./RangeDropdown";
 
@@ -219,7 +218,6 @@ const navigationItems = [
 
 export default function Navigation() {
   const location = useLocation();
-  const [selectedRange, setSelectedRange] = useState("Range");
 
   return (
     <header className="bg-white border-b-0">
@@ -233,7 +231,7 @@ export default function Navigation() {
 
         {/* User Section */}
         <div className="flex items-center gap-4">
-          <RangeDropdown value={selectedRange} onChange={setSelectedRange} />
+          <RangeDropdown />
           <UserDropdown />
         </div>
       </div>

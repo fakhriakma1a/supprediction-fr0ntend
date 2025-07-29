@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PredictionRangeProvider } from "@/hooks/usePredictionRange";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -27,33 +28,35 @@ const queryClient = new QueryClient();
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/sto-manage" element={<STOManage />} />
-            <Route path="/sto-details/:id" element={<STODetails />} />
-            <Route path="/sto-update/:id" element={<STOUpdateForm />} />
-            <Route path="/warehouse-manage" element={<WarehouseManage />} />
-            <Route
-              path="/warehouse-details/:id"
-              element={<WarehouseDetails />}
-            />
-            <Route path="/input" element={<Input />} />
-            <Route path="/input/sales" element={<InputSales />} />
-            <Route path="/input/architecture" element={<InputArchitecture />} />
-            <Route path="/input/metadata" element={<InputMetadata />} />
-            <Route path="/input/warehouse" element={<InputWarehouse />} />
-            <Route path="/reports" element={<Reports />} />
-            {/* Catch-all route for 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <PredictionRangeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/sto-manage" element={<STOManage />} />
+              <Route path="/sto-details/:id" element={<STODetails />} />
+              <Route path="/sto-update/:id" element={<STOUpdateForm />} />
+              <Route path="/warehouse-manage" element={<WarehouseManage />} />
+              <Route
+                path="/warehouse-details/:id"
+                element={<WarehouseDetails />}
+              />
+              <Route path="/input" element={<Input />} />
+              <Route path="/input/sales" element={<InputSales />} />
+              <Route path="/input/architecture" element={<InputArchitecture />} />
+              <Route path="/input/metadata" element={<InputMetadata />} />
+              <Route path="/input/warehouse" element={<InputWarehouse />} />
+              <Route path="/reports" element={<Reports />} />
+              {/* Catch-all route for 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </PredictionRangeProvider>
     </QueryClientProvider>
   );
 }
