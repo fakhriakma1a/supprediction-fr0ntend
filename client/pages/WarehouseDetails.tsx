@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { CustomTooltip } from "@/components/CustomTooltip";
 
 interface STORecord {
   id: string;
@@ -28,6 +30,45 @@ const getSTOStatusColor = (status: string) => {
       return "bg-gray-500";
   }
 };
+
+// Supply trend chart data for Recharts
+const supplyTrendData = [
+  {
+    date: '2025-01-01',
+    supply: 25,
+    predicted: 23,
+  },
+  {
+    date: '2025-01-02',
+    supply: 28,
+    predicted: 26,
+  },
+  {
+    date: '2025-01-03',
+    supply: 23,
+    predicted: 21,
+  },
+  {
+    date: '2025-01-04',
+    supply: 31,
+    predicted: 29,
+  },
+  {
+    date: '2025-01-05',
+    supply: 27,
+    predicted: 25,
+  },
+  {
+    date: '2025-01-06',
+    supply: null,
+    predicted: 30,
+  },
+  {
+    date: '2025-01-07',
+    supply: null,
+    predicted: 28,
+  },
+];
 
 export default function WarehouseDetails() {
   const navigate = useNavigate();
@@ -140,77 +181,87 @@ export default function WarehouseDetails() {
         </Card>
 
         {/* Chart Section */}
-        <Card className="rounded-3xl shadow-lg mb-8">
+        <Card className="chart-shadow rounded-3xl mb-8">
           <CardContent className="p-8">
             <h2 className="font-poppins text-2xl md:text-3xl font-medium text-black mb-6">
               Warehouse Total Supply Trend Prediction
             </h2>
 
-            {/* Chart Placeholder */}
-            <div className="relative h-72 bg-gray-50 rounded-2xl flex items-center justify-center">
-              {/* Line Chart SVG */}
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 800 300"
-                className="absolute inset-0"
-              >
-                {/* Grid lines */}
-                <defs>
-                  <pattern
-                    id="grid"
-                    width="80"
-                    height="50"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 80 0 L 0 0 0 50"
-                      fill="none"
-                      stroke="#e5e7eb"
-                      strokeWidth="1"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-
-                {/* Chart line */}
-                <path
-                  d="M 100 150 L 200 120 L 300 140 L 400 100 L 500 110 L 600 130 L 700 125"
-                  fill="none"
-                  stroke="#8884d8"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-
-                {/* Data points */}
-                <circle cx="100" cy="150" r="4" fill="#8884d8" />
-                <circle cx="200" cy="120" r="4" fill="#8884d8" />
-                <circle cx="300" cy="140" r="4" fill="#8884d8" />
-                <circle cx="400" cy="100" r="4" fill="#8884d8" />
-                <circle cx="500" cy="110" r="4" fill="#8884d8" />
-                <circle cx="600" cy="130" r="4" fill="#8884d8" />
-                <circle cx="700" cy="125" r="4" fill="#8884d8" />
-
-                {/* Prediction marker */}
-                <text
-                  x="500"
-                  y="95"
-                  fill="#8884d8"
-                  fontSize="14"
-                  fontFamily="Poppins"
+            {/* Interactive Chart Container */}
+            <div className="relative h-96 bg-gradient-to-b from-blue-50 to-blue-100 rounded-2xl p-6">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={supplyTrendData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 20,
+                  }}
                 >
-                  2025-01-04
-                </text>
-                <text
-                  x="500"
-                  y="85"
-                  fill="#8884d8"
-                  fontSize="12"
-                  fontFamily="Poppins"
-                >
-                  prediction: 61
-                </text>
-              </svg>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    tickFormatter={(value) => value.split('-')[2]} // Show only day
+                    className="font-poppins"
+                  />
+                  <YAxis 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    className="font-poppins"
+                  />
+                  
+                  {/* Custom Tooltip */}
+                  <Tooltip 
+                    content={<CustomTooltip />}
+                    cursor={{ stroke: '#3b82f6', strokeWidth: 1, strokeDasharray: '5 5' }}
+                  />
+                  
+                  {/* Legend */}
+                  <Legend 
+                    verticalAlign="top" 
+                    height={36}
+                    iconType="circle"
+                    wrapperStyle={{ fontFamily: 'Poppins' }}
+                  />
+                  
+                  {/* Supply Data Line */}
+                  <Line
+                    type="monotone"
+                    dataKey="supply"
+                    name="Supply"
+                    stroke="#6b7280"
+                    strokeWidth={3}
+                    dot={{ fill: '#6b7280', strokeWidth: 2, r: 4 }}
+                    activeDot={{ 
+                      r: 6, 
+                      fill: '#6b7280',
+                      stroke: '#ffffff',
+                      strokeWidth: 2
+                    }}
+                    connectNulls={false}
+                  />
+                  
+                  {/* Predicted Supply Line */}
+                  <Line
+                    type="monotone"
+                    dataKey="predicted"
+                    name="Predicted"
+                    stroke="#10b981"
+                    strokeWidth={3}
+                    dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                    activeDot={{ 
+                      r: 6, 
+                      fill: '#10b981',
+                      stroke: '#ffffff',
+                      strokeWidth: 2
+                    }}
+                    connectNulls={true}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </CardContent>
         </Card>
